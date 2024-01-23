@@ -1,7 +1,8 @@
-import ColorPicker from "@components/ColorPicker";
 import Counter from "@components/Counter";
 import DisplayFormData from "@components/DisplayFormData";
 import DisplayText from "@components/DisplayText";
+import ColorPicker from "@components/ColorPicker";
+import List from "@components/List";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <DisplayText />
         <DisplayFormData />
         <ColorPicker />
+        <List />
       </div>
     </main>
   );

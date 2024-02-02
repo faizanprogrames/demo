@@ -4,7 +4,12 @@ import DisplayText from "@components/DisplayText";
 import ColorPicker from "@components/ColorPicker";
 import List from "@components/List";
 
-export default function Home() {
+import { groq } from "next-sanity";
+
+const query = groq`*[_type == "post"]`;
+
+export default async function Home() {
+  const posts = await fetch(query);
   return (
     <main className="">
       <div className="text-center">

@@ -2,47 +2,49 @@
 
 import { useState } from "react";
 
-type ListItem = {
+type Props = {
   id: number;
   name: string;
-}
+};
 
-type Props = {
-  initialItems: ListItem[];
-}
+export default function AddItem() {
+  const [itemName, setItemName] = useState<string>("");
+  const [items, setItems] = useState<Props[]>([]);
 
-export default function AddItem({ initialItems }: Props) {
-  const [items, setItems] = useState<ListItem[]>(initialItems);
-  const [newItemName, setNewItemName] = useState("");
-
-  const handleAddItem = () => {
-    if (newItemName.trim() !== "") {
-      const newItem: ListItem = {
-        id: Date.now(),
-        name: newItemName.trim(),
+  function handleList() {
+    if (itemName.trim() !== "") {
+      const newItem: Props = {
+        id: items.length + 1,
+        name: itemName,
       };
       setItems([...items, newItem]);
-      setNewItemName("");
+      setItemName("");
     }
-  };
-
+  }
   return (
     <div>
-      <ul>
+      <div className="space-x-2">
+        <input
+          type="text"
+          placeholder="Enter item name"
+          value={itemName}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setItemName(e.target.value)
+          }
+          className="border border-gray-600 p-2 rounded-md"
+        />
+        <button
+          type="button"
+          className="border border-gray-600 p-2 rounded-md"
+          onClick={handleList}
+        >
+          Add Item
+        </button>
         {items.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <div key={item.id}>
+            <p>{item.name}</p>
+          </div>
         ))}
-      </ul>
-      <div>
-        <label>
-          New Item:
-          <input
-            type="text"
-            value={newItemName}
-            onChange={(e) => setNewItemName(e.target.value)}
-          />
-        </label>
-        <button onClick={handleAddItem}>Add</button>
       </div>
     </div>
   );

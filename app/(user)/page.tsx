@@ -1,10 +1,12 @@
-import Link from "next/link";
+import TodoList from "@components/TodoList";
+import ShoppingCart from "@components/ShoppingCart";
 
 export default function Home() {
   return (
     <main className="">
       <div>
-        <Link href="/users">Users Page</Link>
+        <TodoList />
+        <ShoppingCart />
       </div>
     </main>
   );

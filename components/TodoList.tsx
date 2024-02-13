@@ -2,65 +2,57 @@
 
 import { useState } from "react";
 
-type Props = {
+// Define types for task and task list
+interface Task {
   id: number;
   text: string;
-  done: boolean;
-};
+}
 
 export default function TodoList() {
-  const [tasks, setTasks] = useState<Props[]>([]);
-  const [newTask, setNewTask] = useState<string>("");
+  // State for managing tasks
+  const [tasks, setTasks] = useState<Task[]>([]);
+  // State for managing input value
+  const [inputValue, setInputValue] = useState<string>("");
 
-  const addTask = () => {
-    if (newTask.trim() !== "") {
-      const newTaskObject: Props = {
+  // Function to handle adding a task
+  const handleAddTask = () => {
+    if (inputValue.trim() !== "") {
+      const newTask: Task = {
         id: tasks.length + 1,
-        text: newTask,
-        done: false,
+        text: inputValue.trim(),
       };
-
-      setTasks([...tasks, newTaskObject]);
-      setNewTask("");
+      setTasks([...tasks, newTask]);
+      setInputValue("");
     }
   };
 
-  const markAsDone = (taskId: number) => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === taskId ? { ...task, done: !task.done } : task
-    );
-
-    setTasks(updatedTasks);
-  };
-
-  const deleteTask = (taskId: number) => {
+  // Function to handle deleting a task
+  const handleDeleteTask = (taskId: number) => {
     const updatedTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(updatedTasks);
   };
 
   return (
-    <div>
-      <div className="space-x-2">
-        <input
-          type="text"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          placeholder="Enter a new task"
-          className="border border-gray-600 p-2 rounded-md"
-        />
-        <button
-          onClick={addTask}
-          className="border border-gray-600 p-2 rounded-md"
-        >
-          Add Task
-        </button>
-      </div>
-      <ul>
+    <div className="flex flex-col items-center justify-center space-x-2">
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Enter a task"
+        className="mt-2 border border-gray-600 p-2 rounded-md"
+      />
+      <button
+        onClick={handleAddTask}
+        className="mt-2 border border-gray-600 p-2 rounded-md"
+      >
+        Add Task
+      </button>
+      <ul className="mt-2">
         {tasks.map((task) => (
           <li key={task.id}>
             {task.text}
             <button
-              onClick={() => deleteTask(task.id)}
+              onClick={() => handleDeleteTask(task.id)}
               className="border border-gray-600 p-2 rounded-md"
             >
               Delete

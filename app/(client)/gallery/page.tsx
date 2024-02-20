@@ -1,7 +1,7 @@
 import Image from "next/image";
 import wallpaper from "@public/wallpaper.jpg";
 
-export default function RonaldoPage() {
+export default function GalleryPage() {
   return (
     <div>
       <Image

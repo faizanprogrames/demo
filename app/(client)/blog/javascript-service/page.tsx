@@ -1,4 +1,4 @@
-export default function JavaScriptService() {
+export default function JavaScriptServicePage() {
   return (
     <div>
       <h1 className="text-4xl text-center text-indigo-600">

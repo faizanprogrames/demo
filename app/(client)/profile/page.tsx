@@ -13,7 +13,7 @@ async function getData() {
   return res.json();
 }
 
-export default async function User() {
+export default async function ProfilePage() {
   const users = await getData();
   return (
     <main className="">

@@ -1,15 +1,10 @@
-// import TodoList from "@components/TodoList";
-// import ShoppingCart from "@components/ShoppingCart";
-
-import Tab from "@components/Tabs";
+import Wizard from "@components/Wizard";
 
 export default function Home() {
   return (
     <main className="">
       <div>
-        {/* <TodoList /> */}
-        {/* <ShoppingCart /> */}
-        <Tab />
+        <Wizard />
       </div>
     </main>
   );

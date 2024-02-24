@@ -8,7 +8,7 @@ type Props = {
 export default function Review({ params }: Props) {
   return (
     <div>
-      Review {params.reviewId} of product {params.reviewId}
+      Review {params.reviewId} of product {params.productId}
     </div>
   );
 }

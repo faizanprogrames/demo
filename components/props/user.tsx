@@ -2,6 +2,6 @@ type Props = {
   student: string;
 };
 
-export default function Users({ student }: Props) {
+export default function User({ student }: Props) {
   return <div>{student}</div>;
 }

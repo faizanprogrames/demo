@@ -1,16 +1,15 @@
 import Image from "next/image";
-import wallpaper from "@public/wallpaper.jpg";
 
-export default function GalleryPage() {
+export default function Gallery() {
   return (
     <div>
       <Image
-        src={wallpaper}
-        alt="Football Manager Photo"
+        src="/wallpaper.jpg"
+        alt="wolf"
+        className="object-cover object-center"
         fill
-        priority
+        quality={80}
         sizes="100vw"
-        className="object-cover"
       />
     </div>
   );
